@@ -9,13 +9,13 @@ import json
 class Minimp4Pipeline(object):
 
     def __init__(self):
-        self.f = open('minimovies.json','a','utf-8')
+        self.f = open('minimovies.json','w')
         pass
 
     # 保存数据
     def process_item(self, item, spider):
-        data = json.dumps(dict(item),ensure_ascii=false,encoding='utf-8') +'\n'
-        self.f.write(data)
+        con = json.dumps(dict(item),ensure_ascii=False)+'\n'
+        self.f.write(con.encode('utf-8'))
         return item
 
     def close_spider(self,spider):
